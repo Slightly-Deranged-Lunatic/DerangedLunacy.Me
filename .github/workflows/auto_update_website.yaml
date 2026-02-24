@@ -9,6 +9,6 @@ jobs:
 
         steps:
             - uses: actions/checkout@v4
-
-            - name: Run a one-line script
-              run: git fetch https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me main && git reset --hard FETCH_HEAD
+              env : secret: ${{ secret.PAT}}
+            - name: Update website
+              run: git fetch https://"$secret"@github.com/DerangedLunacy.Me main && git reset --hard FETCH_HEAD
