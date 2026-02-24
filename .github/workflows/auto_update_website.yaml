@@ -10,6 +10,6 @@ jobs:
         steps:
             - uses: actions/checkout@v4
               env:
-                secret: ${{ secret.PAT }}
+                secret: ${{ secrets.PAT }}
             - name: Update website
               run: git fetch https://"$secret"@github.com/DerangedLunacy.Me main && git reset --hard FETCH_HEAD
