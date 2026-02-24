@@ -13,6 +13,6 @@ jobs:
                 ACCESS_TOKEN: ${{ secrets.PAT }}
             - name: Push to private repo to update on server
               run: |
-                export GITHUB_TOKEN=ACCESS_TOKEN
+                export GITHUB_TOKEN=${{ secrets.PAT }}
                 git clone https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me
                 git push https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner
