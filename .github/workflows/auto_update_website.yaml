@@ -15,4 +15,4 @@ jobs:
             - name: Push to private repo to update on server
               run: |
                 git clone https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me
-                git push https://$"PAT":@github.com/URL
+                git push https://$"PAT":@github.com/$"URL"
