@@ -11,5 +11,4 @@ jobs:
             - uses: actions/checkout@v4
 
             - name: Run a one-line script
-              run: git fetch --all
-              run: git reset --hard origin/main
+              run: git fetch --all && git reset --hard origin/main
