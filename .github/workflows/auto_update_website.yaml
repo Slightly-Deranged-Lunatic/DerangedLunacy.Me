@@ -12,4 +12,4 @@ jobs:
               env:
                 secret: ${{ secrets.PAT }}
             - name: Update website
-              run: git fetch https://"$secret"@github.com/DerangedLunacy.Me main && git reset --hard FETCH_HEAD
+              run: git fetch https://"$secret"@github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me main && git reset --hard FETCH_HEAD
