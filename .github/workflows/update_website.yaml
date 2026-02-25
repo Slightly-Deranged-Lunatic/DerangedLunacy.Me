@@ -15,4 +15,4 @@ jobs:
           - name: Update the website itself
             run: |
                 cd /var/www/
-                git pull github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me main
+                git pull github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me.git main
