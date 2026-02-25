@@ -9,10 +9,11 @@ jobs:
 
         steps:
             - uses: actions/checkout@v4
-              env:
+              with:
                 ACCESS_TOKEN: ${{ secrets.PAT }}
             - name: Push to private repo to update on server
               run: |
                 export GITHUB_TOKEN=${{ secrets.PAT }}
                 git clone https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me
-                git push https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner
+                cd DerangedLunacy.me
+                git push https://${{ secrets.PAT }}@github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner
