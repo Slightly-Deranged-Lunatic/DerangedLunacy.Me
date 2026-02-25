@@ -14,4 +14,4 @@ jobs:
       - name: Push to private repo to update on server
         if: ${{ github.repository == 'Slightly-Deranged-Lunatic/DerangedLunacy.Me' }}
         run: |
-          git push https://${{ secrets.PAT }}@github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner --force
+          git push https://${{ secrets.PAT }}@github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner.git --force
