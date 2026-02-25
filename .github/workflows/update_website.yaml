@@ -13,6 +13,7 @@ jobs:
 
         steps:
           - name: Update the website itself
+          - if: github.repository == "https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner"
             run: |
                 cd /var/www/
                 git pull https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me.git main
