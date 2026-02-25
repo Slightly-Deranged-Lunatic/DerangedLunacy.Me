@@ -1,0 +1,16 @@
+# NOTE TO ANY DEVELOPERS / READERS
+# This job should fail **on the public repo** no matter what because the worker isn't registered on that repo (it is on the private one)
+# This was done because I was not comfortable making my server able to be sshed from anywhere and I did not want the security risks of self hosting a worker registered to the public repo
+
+name: Auto Update Website
+on:
+    push:
+        branches: "main"
+
+jobs:
+    build:
+        runs-on: self-hosted
+        name: Update the website itself
+        run: |
+          cd /var/www/
+          git pull github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me
