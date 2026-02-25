@@ -10,7 +10,9 @@ on:
 jobs:
     build:
         runs-on: self-hosted
-        name: Update the website itself
-        run: |
-          cd /var/www/
-          git pull github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me
+
+        steps:
+          name: Update the website itself
+          run: |
+            cd /var/www/
+            git pull github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me
