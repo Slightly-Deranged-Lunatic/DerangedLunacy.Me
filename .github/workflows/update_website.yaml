@@ -4,16 +4,16 @@
 
 name: Auto Update Website
 on:
-    push:
-        branches: "main"
+  push:
+    branches: "main"
 
 jobs:
-    build:
-        runs-on: self-hosted
+  build:
+    runs-on: self-hosted
 
-        steps:
-          - name: Update the website itself
-          - if: ${{ github.repository == "Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner" }}
-            run: |
-                cd /var/www/
-                git pull https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me.git main
+    steps:
+    - name: Update the website itself
+    - if: ${{ github.repository == 'Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner' }}
+      run: |
+        cd /var/www/
+        git pull https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me.git main
