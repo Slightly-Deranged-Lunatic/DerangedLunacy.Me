@@ -1,0 +1,15 @@
+name: Auto Update Website
+on:
+    push:
+        branches: "main"
+
+jobs:
+  build:
+      if: ${{ github.repository == 'Slightly-Deranged-Lunatic/DerangedLunacy.Me' }}
+      runs-on: ubuntu-latest
+      steps:
+      - name: Push to private repo to update on server
+        run: |
+          git clone https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me
+          cd DerangedLunacy.Me
+          git push https://${{ secrets.PAT }}@github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner --force
