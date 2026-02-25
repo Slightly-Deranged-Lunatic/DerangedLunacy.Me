@@ -15,5 +15,5 @@ jobs:
               run: |
                 export GITHUB_TOKEN=${{ secrets.PAT }}
                 git clone https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me
-                cd DerangedLunacy.me
+                cd DerangedLunacy.Me
                 git push https://${{ secrets.PAT }}@github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner
