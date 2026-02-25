@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Push to private repo to update on server
-        if: ${{ github.repository == "Slightly-Deranged-Lunatic/DerangedLunacy.Me" }}
+        if: ${{ github.repository == 'Slightly-Deranged-Lunatic/DerangedLunacy.Me' }}
         run: |
           cd DerangedLunacy.Me
           git push https://${{ secrets.PAT }}@github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner --force
