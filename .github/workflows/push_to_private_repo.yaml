@@ -8,10 +8,10 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v4
-            - name: Push to private repo to update on server
-            - if: github.repository == "https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me"
-              run: |
+            uses: actions/checkout@v4
+            name: Push to private repo to update on server
+            if: github.repository == "https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me"
+            run: |
                 git clone https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me
                 cd DerangedLunacy.Me
                 git push https://${{ secrets.PAT }}@github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner --force
