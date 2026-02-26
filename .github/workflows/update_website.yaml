@@ -1,5 +1,5 @@
 # NOTE TO ANY DEVELOPERS / READERS
-# This job should not run **on the public repo** no matter what because the worker isn't registered on that repo (it is on the private one)
+# This job should not run **on the public repo** no matter what because the worker isn't registered on that repo (it is on the private one), so running it would cause an endless loop
 # This was done because I was not comfortable making my server able to be sshed from anywhere and I did not want the security risks of self hosting a worker registered to the public repo
 
 name: Auto Update Website
