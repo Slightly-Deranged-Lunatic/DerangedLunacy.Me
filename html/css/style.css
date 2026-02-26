@@ -7,3 +7,7 @@ html {
 ul {
     list-style-position: inside;
 }
+
+footer {
+    background-color:rgb(210, 137, 255)
+}
