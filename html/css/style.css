@@ -1,9 +1,14 @@
-html {
+body {
     background-color:rgb(15, 0, 26);
     color: white;
     text-align: center;
+    font-size: 24px;
 }
 
 ul {
     list-style-position: inside;
+}
+
+footer {
+    background-color:rgb(210, 137, 255)
 }
