@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Execute remote SSH commands using fingerprints
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE}}
-          capture_stdout: true
           script: whoami
           #script_path: deploy_server.sh
