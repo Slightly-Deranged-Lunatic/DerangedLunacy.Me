@@ -15,6 +15,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE}}
+          #passphrase: ${{ secrets.PASSPHRASE}}
           script: whoami
           #script_path: deploy_server.sh
