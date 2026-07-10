@@ -15,4 +15,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE}}
+          capture_stdout: true
           script_path: .github/workflows/deploy_server.sh
+
+name: Use captured output
+  run: echo "SSH output was ${{ steps.ssh.outputs.stdout }}"
