@@ -1,15 +1,19 @@
 name: Auto Update Website
 on:
-    push:
-        branches: "main"
+  push:
+    branches: ["development"]
 
 jobs:
   build:
-      if: ${{ github.repository == 'Slightly-Deranged-Lunatic/DerangedLunacy.Me' }}
-      runs-on: ubuntu-latest
-      steps:
-      - name: Push to private repo to update on server
-        run: |
-          git clone https://github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me
-          cd DerangedLunacy.Me
-          git push https://${{ secrets.PAT }}@github.com/Slightly-Deranged-Lunatic/DerangedLunacy.Me-Runner --force
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute remote SSH commands using fingerprints
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          capture_stdout: true
+          script: whoami
+          #script_path: deploy_server.sh
