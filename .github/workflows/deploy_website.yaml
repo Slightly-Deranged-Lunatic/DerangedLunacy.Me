@@ -8,7 +8,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Execute remote SSH commands using fingerprints
+        name: Execute remote SSH commands using fingerprints
         uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.HOST }}
