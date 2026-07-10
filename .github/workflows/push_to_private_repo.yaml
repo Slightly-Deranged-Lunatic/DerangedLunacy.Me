@@ -2,7 +2,6 @@ name: Auto Update Website
 on:
   push:
     branches: ["development"]
-  workflow_dispatch:
 
 jobs:
   build:
@@ -16,5 +15,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE}}
-          script: whoami
-          #script_path: deploy_server.sh
+          script_path: deploy_server.sh
