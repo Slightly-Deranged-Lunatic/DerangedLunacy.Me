@@ -2,7 +2,7 @@ name: Auto Update Website
 on:
   push:
     branches: ["development"]
-  workflow_dispatch
+  workflow_dispatch: true
 
 jobs:
   build:
