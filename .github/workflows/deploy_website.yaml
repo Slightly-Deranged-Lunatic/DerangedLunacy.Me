@@ -1,0 +1,26 @@
+name: Auto Update Website
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Execute remote SSH commands using fingerprints
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE}}
+          capture_stdout: true
+          script_path: .github/workflows/deploy_server.sh
+
+      - name: Use captured output
+        run: echo "SSH output was ${{ steps.ssh.outputs.stdout }}"
