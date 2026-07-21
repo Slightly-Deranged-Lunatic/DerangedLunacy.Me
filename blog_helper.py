@@ -47,3 +47,6 @@ def make_html_file(dates):
 
 if __name__ == "__main__":
     main()
+
+#TODO: Write the boilerplate HTML code to the new file
+#TODO: Edit the respective files to point to the new HTML file that was made
