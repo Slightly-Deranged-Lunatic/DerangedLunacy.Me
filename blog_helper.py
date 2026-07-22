@@ -30,12 +30,12 @@ def make_html_file(dates):
     # Undocumented year so we need to make a new year directory
     year = dates["year"]
     if year not in os.listdir():
-        os.mkdir(dates["year"])
+        os.mkdir(year)
         print(f"Made the {year} directory in {os.getcwd()}")
-    os.chdir(dates["year"])
+    os.chdir(year)
 
     # Undocumented month so we need to make a new month directory
-    month_directory = f"{dates["year"]}_{dates["month_name"]}"
+    month_directory = f"{dates["month_name"]}"
     if  month_directory not in os.listdir():
         os.mkdir(month_directory)
         print(f"Made the {month_directory} directory in {os.getcwd()}")
@@ -91,7 +91,7 @@ def get_html_boilerplate(dates):
                 text here meowmeowmewmewmoweo
             </p>
             <footer>
-                <a href = "../{year}_list.html"> Go back to the {year} blogs </a>
+                <a href = "../list.html"> Go back to the {year} blogs </a>
                 <br>
                 <a href = "../../blog_homepage.html"> Go back to all blogs </a>
                 <br>
