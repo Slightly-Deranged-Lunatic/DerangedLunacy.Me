@@ -7,18 +7,18 @@ def main():
     standardize_working_directory()
     date_object = date.today()
     dates = {
-        "current_day" : date_object.strftime("%d"),
-        "current_day_name" : date_object.strftime("%A"),
-        "current_month" : date_object.strftime("%m"),
-        "current_month_name" : date_object.strftime("%B"),
-        "current_year" : date_object.strftime("%Y"),
-        "current_date" : date_object.strftime("%d_%m_%Y")
+        "day" : date_object.strftime("%d"),
+        "day_name" : date_object.strftime("%A"),
+        "month" : date_object.strftime("%m"),
+        "month_name" : date_object.strftime("%B"),
+        "year" : date_object.strftime("%Y"),
+        "full_date" : date_object.strftime("%d_%m_%Y")
     }
 
     os.chdir("html/subpages/my_blog")
     make_html_file(dates)
-    standardize_working_directory()
     html_boilerplate = get_html_boilerplate(dates)
+    os.chdir(f"{dates["year"]}/")
 
 def standardize_working_directory():
     # Makes the working directory the website directory no matter where the script is being ran.
@@ -28,21 +28,21 @@ def standardize_working_directory():
 
 def make_html_file(dates):
     # Undocumented year so we need to make a new year directory
-    current_year = dates["current_year"]
-    if current_year not in os.listdir():
-        os.mkdir(dates["current_year"])
-        print(f"Made the {current_year} directory in {os.getcwd()}")
-    os.chdir(dates["current_year"])
+    year = dates["year"]
+    if year not in os.listdir():
+        os.mkdir(dates["year"])
+        print(f"Made the {year} directory in {os.getcwd()}")
+    os.chdir(dates["year"])
 
     # Undocumented month so we need to make a new month directory
-    month_directory = f"{dates["current_year"]}_{dates["current_month_name"]}"
+    month_directory = f"{dates["year"]}_{dates["month_name"]}"
     if  month_directory not in os.listdir():
         os.mkdir(month_directory)
         print(f"Made the {month_directory} directory in {os.getcwd()}")
     os.chdir(month_directory)
 
     # Undocumented day so we need to make a new day html file
-    html_file_name = f"{dates["current_date"]}.html"
+    html_file_name = f"{dates["full_date"]}.html"
     if html_file_name not in os.listdir():
         with open(html_file_name, "x") as file:
             print(f"Made the HTML file {html_file_name} in {os.getcwd()}")
@@ -65,11 +65,11 @@ def get_ordinal(number):
         return "th"
 
 def get_html_boilerplate(dates):
-    month_name = dates["current_month_name"]
-    month = dates["current_month"]
-    day = dates["current_day"]
-    day_name = dates["current_day_name"]
-    year = dates["current_year"]
+    month_name = dates["month_name"]
+    month = dates["month"]
+    day = dates["day"]
+    day_name = dates["day_name"]
+    year = dates["year"]
     boilerplate = f"""
     <!DOCTYPE html>
 
