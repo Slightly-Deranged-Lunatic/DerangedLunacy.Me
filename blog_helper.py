@@ -69,8 +69,7 @@ def get_blog_post_boilerplate(dates):
     day = dates["day"]
     day_name = dates["day_name"]
     year = dates["year"]
-    boilerplate = f"""
-    <!DOCTYPE html>
+    boilerplate = f"""<!DOCTYPE html>
 
     <head>
         <title>
@@ -96,8 +95,8 @@ def get_blog_post_boilerplate(dates):
                 <a href = "../../../../index.html"> Go back to the homepage </a>
             </footer>
         </body>
-    </html>
-    """
+    </html>"""
+
     return boilerplate
 
 def write_boilerplate_to_post(dates, blog_post_boilerplate):
