@@ -15,16 +15,20 @@ def main():
         "full_date" : date_object.strftime("%d_%m_%Y")
     }
 
-    os.chdir("html/subpages/my_blog")
     make_html_file(dates)
     html_boilerplate = get_html_boilerplate(dates)
 
+    os.chdir(f"{dates["year"]}/{dates["month_name"]}")
+    print(f"Changed directory to {os.getcwd()}")
+    with open(f"{dates["full_date"]}.html", "w") as blog_post:
+        blog_post.write(html_boilerplate)
+    print("Blog boilerplate written to blog file")
 
 def standardize_working_directory():
-    # Makes the working directory the website directory no matter where the script is being ran.
+    # Makes the working directory /html/subpages/my_blog no matter where the script is being ran from.
     # This way we can use relative paths.
     website_directory = os.path.dirname(__file__)
-    os.chdir(website_directory)
+    os.chdir(f"{website_directory}/html/subpages/my_blog")
 
 def make_html_file(dates):
     # Undocumented year so we need to make a new year directory
