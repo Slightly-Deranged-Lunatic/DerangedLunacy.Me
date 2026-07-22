@@ -17,12 +17,7 @@ def main():
 
     make_html_file(dates)
     html_boilerplate = get_html_boilerplate(dates)
-
-    os.chdir(f"{dates["year"]}/{dates["month_name"]}")
-    print(f"Changed directory to {os.getcwd()}")
-    with open(f"{dates["full_date"]}.html", "w") as blog_post:
-        blog_post.write(html_boilerplate)
-    print("Blog boilerplate written to blog file")
+    write_boilerplate_to_post(dates, html_boilerplate)
 
 def standardize_working_directory():
     # Makes the working directory /html/subpages/my_blog no matter where the script is being ran from.
@@ -52,6 +47,7 @@ def make_html_file(dates):
             print(f"Made the HTML file {html_file_name} in {os.getcwd()}")
     else:
         print(f"Could not make HTML file, does {html_file_name} exist in {month_directory}?")
+    standardize_working_directory()
 
 def get_ordinal(number):
     # Automatically assign a numbers ordinal based off of the last digit
@@ -104,6 +100,14 @@ def get_html_boilerplate(dates):
     </html>
     """
     return boilerplate
+
+def write_boilerplate_to_post(dates, html_boilerplate):
+    os.chdir(f"{dates["year"]}/{dates["month_name"]}")
+    print(f"Changed directory to {os.getcwd()}")
+    with open(f"{dates["full_date"]}.html", "w") as blog_post:
+        blog_post.write(html_boilerplate)
+    print("Blog boilerplate written to blog file")
+    standardize_working_directory()
 
 if __name__ == "__main__":
     main()
