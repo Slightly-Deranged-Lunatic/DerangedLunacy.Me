@@ -1,7 +1,6 @@
 import os
 import html
 from datetime import date
-from sre_parse import SPECIAL_CHARS
 
 def main():
     standardize_working_directory()
