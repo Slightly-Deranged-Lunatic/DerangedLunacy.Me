@@ -18,7 +18,7 @@ def main():
     os.chdir("html/subpages/my_blog")
     make_html_file(dates)
     html_boilerplate = get_html_boilerplate(dates)
-    os.chdir(f"{dates["year"]}/")
+
 
 def standardize_working_directory():
     # Makes the working directory the website directory no matter where the script is being ran.
