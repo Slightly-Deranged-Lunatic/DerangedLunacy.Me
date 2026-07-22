@@ -15,8 +15,8 @@ def main():
     }
 
     make_html_file(dates)
-    html_boilerplate = get_html_boilerplate(dates)
-    write_boilerplate_to_post(dates, html_boilerplate)
+    blog_post_boilerplate = get_blog_post_boilerplate(dates)
+    write_boilerplate_to_post(dates, blog_post_boilerplate)
 
 def standardize_working_directory():
     # Makes the working directory /html/subpages/my_blog no matter where the script is being ran from.
@@ -63,7 +63,7 @@ def get_ordinal(number):
     else:
         return "th"
 
-def get_html_boilerplate(dates):
+def get_blog_post_boilerplate(dates):
     month_name = dates["month_name"]
     month = dates["month"]
     day = dates["day"]
@@ -100,11 +100,11 @@ def get_html_boilerplate(dates):
     """
     return boilerplate
 
-def write_boilerplate_to_post(dates, html_boilerplate):
+def write_boilerplate_to_post(dates, blog_post_boilerplate):
     os.chdir(f"{dates["year"]}/{dates["month_name"]}")
     print(f"Changed directory to {os.getcwd()}")
     with open(f"{dates["full_date"]}.html", "w") as blog_post:
-        blog_post.write(html_boilerplate)
+        blog_post.write(blog_post_boilerplate)
     print("Blog boilerplate written to blog file")
     standardize_working_directory()
 
