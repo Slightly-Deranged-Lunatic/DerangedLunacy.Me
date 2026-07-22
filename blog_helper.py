@@ -91,10 +91,9 @@ def get_html_boilerplate(dates):
                 text here meowmeowmewmewmoweo
             </p>
             <footer>
-                <a href = "../list.html"> Go back to the {year} blogs </a>
-                <br>
-                <a href = "../../blog_homepage.html"> Go back to all blogs </a>
-                <br>
+                <a href = "blogs.html"> Go back to the {month_name} blogs </a> <br>
+                <a href = "../list.html"> Go back to the {year} blogs </a> <br>
+                <a href = "../../blog_homepage.html"> Go back to all blogs </a> <br>
                 <a href = "../../../../index.html"> Go back to the homepage </a>
             </footer>
         </body>
