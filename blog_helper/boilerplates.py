@@ -6,31 +6,31 @@ def get_blog_post_boilerplate(dates):
     year = dates["year"]
     boilerplate = f"""<!DOCTYPE html>
 
-    <head>
-        <title>
-            {month} {day} {year}
-        </title>
-        <style>
-            @import url("../../../../css/style.css");
-        </style>
-    </head>
+<head>
+    <title>
+        {month} {day} {year}
+    </title>
+    <style>
+        @import url("../../../../css/style.css");
+    </style>
+</head>
 
-    <html>
-        <body>
-            <h1>
-                {day_name}, {month_name} {int(day)}{get_ordinal(day)}, {year}
-            </h1>
-            <p>
-                text here meowmeowmewmewmoweo
-            </p>
-            <footer>
-                <a href = "blogs.html"> Go back to the {month_name} blogs </a> <br>
-                <a href = "../list.html"> Go back to the {year} blogs </a> <br>
-                <a href = "../../blog_homepage.html"> Go back to all blogs </a> <br>
-                <a href = "../../../../index.html"> Go back to the homepage </a>
-            </footer>
-        </body>
-    </html>"""
+<html>
+    <body>
+        <h1>
+            {day_name}, {month_name} {int(day)}{get_ordinal(day)}, {year}
+        </h1>
+        <p>
+            text here meowmeowmewmewmoweo
+        </p>
+        <footer>
+            <a href = "blogs.html"> Go back to the {month_name} blogs </a> <br>
+            <a href = "../list.html"> Go back to the {year} blogs </a> <br>
+            <a href = "../../blog_homepage.html"> Go back to all blogs </a> <br>
+            <a href = "../../../../index.html"> Go back to the homepage </a>
+        </footer>
+    </body>
+</html>"""
 
     return boilerplate
 
