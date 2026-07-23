@@ -1,5 +1,7 @@
 import os
+from pathlib import Path
 import html
+import boilerplates
 from datetime import date
 
 def main():
@@ -14,15 +16,17 @@ def main():
         "full_date" : date_object.strftime("%d_%m_%Y")
     }
 
-    make_html_file(dates)
-    blog_post_boilerplate = get_blog_post_boilerplate(dates)
-    write_boilerplate_to_post(dates, blog_post_boilerplate)
+    #make_html_file(dates)
+    blog_post_boilerplate = boilerplates.get_blog_post_boilerplate(dates)
+    #write_boilerplate_to_post(dates, blog_post_boilerplate)
 
 def standardize_working_directory():
     # Makes the working directory /html/subpages/my_blog no matter where the script is being ran from.
     # This way we can use relative paths.
     website_directory = os.path.dirname(__file__)
-    os.chdir(f"{website_directory}/html/subpages/my_blog")
+    os.chdir(website_directory)
+    os.chdir(f"{Path.cwd().parent}/html/subpages/my_blog")
+    print(os.getcwd())
 
 def make_html_file(dates):
     # Undocumented year so we need to make a new year directory
@@ -48,56 +52,6 @@ def make_html_file(dates):
         print(f"Could not make HTML file, does {html_file_name} exist in {month_directory}?")
     standardize_working_directory()
 
-def get_ordinal(number):
-    # Automatically assign a numbers ordinal based off of the last digit
-    SPECIAL_CASES = ["11", "12", "13"] # These numbers always use "th" despite ending in 1, 2, and 3, hence they're special cases
-    last_number = number[-1]
-    if number in SPECIAL_CASES:
-        return "th"
-    elif last_number[-1] == "1":
-        return "st"
-    elif last_number[-1] == "2":
-        return "nd"
-    elif last_number[-1] == "3":
-        return "rd"
-    else:
-        return "th"
-
-def get_blog_post_boilerplate(dates):
-    month_name = dates["month_name"]
-    month = dates["month"]
-    day = dates["day"]
-    day_name = dates["day_name"]
-    year = dates["year"]
-    boilerplate = f"""<!DOCTYPE html>
-
-    <head>
-        <title>
-            {month} {day} {year}
-        </title>
-        <style>
-            @import url("../../../../css/style.css");
-        </style>
-    </head>
-
-    <html>
-        <body>
-            <h1>
-                {day_name}, {month_name} {int(day)}{get_ordinal(day)}, {year}
-            </h1>
-            <p>
-                text here meowmeowmewmewmoweo
-            </p>
-            <footer>
-                <a href = "blogs.html"> Go back to the {month_name} blogs </a> <br>
-                <a href = "../list.html"> Go back to the {year} blogs </a> <br>
-                <a href = "../../blog_homepage.html"> Go back to all blogs </a> <br>
-                <a href = "../../../../index.html"> Go back to the homepage </a>
-            </footer>
-        </body>
-    </html>"""
-
-    return boilerplate
 
 def write_boilerplate_to_post(dates, blog_post_boilerplate):
     os.chdir(f"{dates["year"]}/{dates["month_name"]}")
