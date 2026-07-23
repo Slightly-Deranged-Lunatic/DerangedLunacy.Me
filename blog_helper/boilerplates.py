@@ -34,7 +34,7 @@ def get_blog_post_boilerplate(dates):
 
     return boilerplate
 
-def get_blogs_list_boilerplates(dates):
+def get_blogs_list_boilerplate(dates):
     month_name = dates["month_name"]
     year = dates["year"]
     boilerplate = f"""<!DOCTYPE html>
@@ -63,6 +63,36 @@ def get_blogs_list_boilerplates(dates):
         </footer>
     </body>
 </html>"""
+    return boilerplate
+
+def get_month_list_boilerplate(dates):
+    year = dates["year"]
+    boilerplate = f"""<!DOCTYPE html>
+
+<head>
+    <title>
+        {year} Blog Months
+    </title>
+    <style>
+        @import url("../../../css/style.css");
+    </style>
+</head>
+
+<html>
+    <body>
+        <h1>
+            {year} Blogs by Month
+        </h1>
+        <li>
+
+        </li>
+        <footer>
+            <a href = "../blog_homepage.html"> Go back to all blogs </a> <br>
+            <a href = "../../../index.html"> Go back to the homepage </a>
+        </footer>
+    </body>
+</html>"""
+
     return boilerplate
 
 def get_ordinal(number):
