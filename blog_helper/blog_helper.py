@@ -18,6 +18,9 @@ def main():
 
     make_html_file(dates)
     blog_post_boilerplate = boilerplates.get_blog_post_boilerplate(dates)
+    list_boilerplate = boilerplates.get_blogs_list_boilerplate(dates)
+    months_boilerplate = boilerplates.get_month_list_boilerplate(dates)
+
     write_boilerplate_to_post(dates, blog_post_boilerplate)
 
 def standardize_working_directory():
@@ -51,7 +54,6 @@ def make_html_file(dates):
     else:
         print(f"Could not make HTML file, does {html_file_name} exist in {month_directory}?")
     standardize_working_directory()
-
 
 def write_boilerplate_to_post(dates, blog_post_boilerplate):
     os.chdir(f"{dates["year"]}/{dates["month_name"]}")
