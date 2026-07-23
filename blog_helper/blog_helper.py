@@ -16,9 +16,9 @@ def main():
         "full_date" : date_object.strftime("%d_%m_%Y")
     }
 
-    #make_html_file(dates)
+    make_html_file(dates)
     blog_post_boilerplate = boilerplates.get_blog_post_boilerplate(dates)
-    #write_boilerplate_to_post(dates, blog_post_boilerplate)
+    write_boilerplate_to_post(dates, blog_post_boilerplate)
 
 def standardize_working_directory():
     # Makes the working directory /html/subpages/my_blog no matter where the script is being ran from.
