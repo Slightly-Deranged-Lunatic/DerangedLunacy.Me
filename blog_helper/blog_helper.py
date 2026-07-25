@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 import file_funcs
-import html
 from datetime import date
 
 def main():
@@ -31,5 +30,3 @@ def standardize_working_directory():
 
 if __name__ == "__main__":
     main()
-
-#TODO: Edit the respective files to point to the new HTML file that was made
