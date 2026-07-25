@@ -16,7 +16,7 @@ def main():
         "full_date" : date_object.strftime("%d_%m_%Y")
     }
 
-    file_funcs.make_paths(dates)
+    #ile_funcs.make_paths(dates)
     standardize_working_directory()
     file_funcs.create_files(dates)
     standardize_working_directory()

@@ -42,3 +42,10 @@ def create_files(dates):
         with open(blog_name, "w") as file:
             print(f"Made {blog_name} in {os.getcwd()}")
             file.write(boilerplates.get_blog_post_boilerplate(dates))
+
+def file_without_whitespace(file):
+    # I don't like dealing with tabs nor any \n in the list from file.readlines() so this is here
+    file_without_whitespace = []
+    for item in file:
+        file_without_whitespace.append(item.strip())
+    return file_without_whitespace
