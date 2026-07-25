@@ -43,6 +43,23 @@ def create_files(dates):
             print(f"Made {blog_name} in {os.getcwd()}")
             file.write(boilerplates.get_blog_post_boilerplate(dates))
 
+def get_li_element_line(file, html_id):
+    # Gets the line number of the opening <li> for the respective file content with the ID, assuming the directories are correct
+    with open(file) as file_contents:
+        data = file_contents.readlines()
+    stripped_data = []
+    for line in data:
+        stripped_data.append(line.strip())
+    line = stripped_data.index(f"<li id={html_id}") + 1 # Python lists start at 0 and we can't have line 0 in a file
+    return line
+
+def insert_content(file_name, content, line):
+    with open(file_name) as file:
+        file_content = file.readlines()
+    file_content.insert(line - 1, content) # I don't know why this - 1 has to be here for the expected result but its here now so!
+    with open("test.txt", "w") as file:
+        file.writelines(file_content)
+
 def file_without_whitespace(file):
     # I don't like dealing with tabs nor any \n in the list from file.readlines() so this is here
     file_without_whitespace = []
