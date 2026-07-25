@@ -95,6 +95,33 @@ def get_month_list_boilerplate(dates):
 
     return boilerplate
 
+def get_blog_homepage_boilerplate():
+    boilerplate = """<!DOCTYPE html>
+
+<head>
+    <title>
+        Deranged Lunatic's Blog
+    </title>
+    <style>
+        @import url("../../css/style.css");
+    </style>
+</head>
+
+<html>
+    <body>
+        <h1>
+            My Blog
+        </h1>
+        <li id = "year_list">
+
+        </li>
+        <footer>
+            <a href = "../../index.html"> Go back to the homepage </a>
+        </footer>
+    </body>
+</html>"""
+    return boilerplate
+
 def get_ordinal(number):
     # Automatically assign a numbers ordinal based off of the last digit
     SPECIAL_CASES = ["11", "12", "13"] # These numbers always use "th" despite ending in 1, 2, and 3, hence they're special cases

@@ -20,6 +20,11 @@ def make_paths(dates):
 def create_files(dates):
     # Creates the relevant files in paths and populates it with boilerplate html
 
+    # Create blog_homepage.html if it doesn't exist (idk why it wouldn't but here we are)
+    if "blog_homepage.html" not in os.listdir():
+        with open("blog_homepage.html", "w") as file:
+            print(f"Made file blog_homepage.html in {os.getcwd()}")
+            file.write(boilerplates.get_blog_homepage_boilerplate())
     # Create list.html for the years
     year = dates["year"]
     os.chdir(year)
