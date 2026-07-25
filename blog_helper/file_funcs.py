@@ -1,4 +1,6 @@
+from fileinput import filename
 import os
+import string
 import boilerplates
 
 def make_paths(dates):
@@ -50,15 +52,85 @@ def get_li_element_line(file, html_id):
     stripped_data = []
     for line in data:
         stripped_data.append(line.strip())
-    line = stripped_data.index(f"<li id={html_id}") + 1 # Python lists start at 0 and we can't have line 0 in a file
+    line = stripped_data.index(f'<li id = "{html_id}">') + 1 # Python lists start at 0 and we can't have line 0 in a file
     return line
 
 def insert_content(file_name, content, line):
+    # Will automatically append a \n
     with open(file_name) as file:
         file_content = file.readlines()
-    file_content.insert(line - 1, content) # I don't know why this - 1 has to be here for the expected result but its here now so!
-    with open("test.txt", "w") as file:
+
+    # Add indentation
+    comparison_string = file_content[line]
+    leading_spaces = len(comparison_string) - len(comparison_string.lstrip())
+    for i in range(leading_spaces):
+        content = " " + content
+    file_content.insert(line - 1, content + "\n") # I don't know why this - 1 has to be here for the expected result but its here now so!
+    print(file_content)
+    with open(file_name, "w") as file:
         file.writelines(file_content)
+
+def read_file_line(file_name, line):
+    with open(file_name) as file:
+        content = file_without_whitespace(file)
+    return content[line - 1]
+
+def should_edit_file(file, html_id, expected_line):
+    first_list_item_line = get_li_element_line(file, html_id) + 1
+    first_list_item = read_file_line(file, first_list_item_line)
+    if first_list_item == expected_line:
+        print(f"No need to edit the content of {file}")
+        return False
+    else:
+        print("File contents need to be edited")
+        print(f"Content of file: {first_list_item}, expected: {expected_line}")
+        return True
+
+def add_indentation(file_name, line, string_to_indent):
+    # Determines how many spaces should be added to a string based off of a files lines
+    with open(file_name) as file:
+        content = file.readlines()
+    comparison_string = content[line - 1]
+    leading_spaces = len(comparison_string) - len(comparison_string.lstrip())
+    for i in range(leading_spaces):
+        string_to_indent = " " + string_to_indent
+
+def edit_files(dates):
+    year = dates["year"]
+    month_name = dates["month_name"]
+    full_date = dates["full_date"]
+    day = dates["day"]
+
+    # Edit all of the HTML files if applicable
+
+    # blog_homepage.html
+    file = "blog_homepage.html"
+    expected_line = f'<a href = "{year}/list.html"> {year} Blogs </a>'
+    html_id = "year_list"
+    first_list_item_line = get_li_element_line(file, html_id) + 1
+
+    if should_edit_file(file, html_id, expected_line):
+        insert_content(file, expected_line, first_list_item_line)
+    os.chdir(year)
+
+    # list.html
+    file = "list.html"
+    expected_line = f'<a href = "{month_name}/blogs.html"> {month_name} {year} </a>'
+    html_id = "month_list"
+    first_list_item_line = get_li_element_line(file, "month_list") + 1
+
+    if should_edit_file(file, html_id, expected_line):
+        insert_content(file, expected_line, first_list_item_line)
+    os.chdir(month_name)
+
+    # blogs.html
+    file = "blogs.html"
+    expected_line = f'<a href = "{full_date}.html"> {full_date.replace("_", "-")} {day} </a> <br>'
+    html_id = "blog_list"
+    first_list_item_line = get_li_element_line(file, "blog_list") + 1
+
+    if should_edit_file(file, html_id, expected_line):
+        insert_content(file, expected_line, first_list_item_line)
 
 def file_without_whitespace(file):
     # I don't like dealing with tabs nor any \n in the list from file.readlines() so this is here

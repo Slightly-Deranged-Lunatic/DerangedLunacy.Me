@@ -20,6 +20,7 @@ def main():
     standardize_working_directory()
     file_funcs.create_files(dates)
     standardize_working_directory()
+    file_funcs.edit_files(dates)
 
 def standardize_working_directory():
     # Makes the working directory /html/subpages/my_blog no matter where the script is being ran from.
