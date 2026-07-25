@@ -25,6 +25,7 @@ def create_files(dates):
         with open("blog_homepage.html", "w") as file:
             print(f"Made file blog_homepage.html in {os.getcwd()}")
             file.write(boilerplates.get_blog_homepage_boilerplate())
+            
     # Create list.html for the years
     year = dates["year"]
     os.chdir(year)
