@@ -53,7 +53,7 @@ def get_blogs_list_boilerplate(dates):
         <h1>
             {month_name} {year} Blogs
         </h1>
-        <li>
+        <li id = "blog_list">
 
         </li>
         <footer>
@@ -83,7 +83,7 @@ def get_month_list_boilerplate(dates):
         <h1>
             {year} Blogs by Month
         </h1>
-        <li>
+        <li id = "month_list">
 
         </li>
         <footer>
