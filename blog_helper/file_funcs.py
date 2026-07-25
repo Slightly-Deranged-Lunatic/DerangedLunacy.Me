@@ -70,7 +70,6 @@ def insert_content(file_name, content, line):
     for i in range(leading_spaces):
         content = " " + content
     file_content.insert(line - 1, content + "\n") # I don't know why this - 1 has to be here for the expected result but its here now so!
-    print(file_content)
     with open(file_name, "w") as file:
         file.writelines(file_content)
 
