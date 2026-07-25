@@ -1,6 +1,4 @@
-from fileinput import filename
 import os
-import string
 import boilerplates
 
 def make_paths(dates):
@@ -39,7 +37,7 @@ def create_files(dates):
             file.write(boilerplates.get_blogs_list_boilerplate(dates))
 
     # Create new blog post
-    blog_name = f"{dates["full_date"]}"
+    blog_name = f"{dates["full_date"]}.html"
     if blog_name not in os.listdir():
         with open(blog_name, "w") as file:
             print(f"Made {blog_name} in {os.getcwd()}")
@@ -99,7 +97,7 @@ def edit_files(dates):
     year = dates["year"]
     month_name = dates["month_name"]
     full_date = dates["full_date"]
-    day = dates["day"]
+    day_name = dates["day_name"]
 
     # Edit all of the HTML files if applicable
 
@@ -125,7 +123,7 @@ def edit_files(dates):
 
     # blogs.html
     file = "blogs.html"
-    expected_line = f'<a href = "{full_date}.html"> {full_date.replace("_", "-")} {day} </a> <br>'
+    expected_line = f'<a href = "{full_date}.html"> {full_date.replace("_", "-")} {day_name} </a> <br>'
     html_id = "blog_list"
     first_list_item_line = get_li_element_line(file, "blog_list") + 1
 
