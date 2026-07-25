@@ -72,7 +72,7 @@ def insert_content(file_name, content, line):
     file_content.insert(line - 1, content + "\n") # I don't know why this - 1 has to be here for the expected result but its here now so!
     with open(file_name, "w") as file:
         file.writelines(file_content)
-    print(f"Edited {file}")
+    print(f"Edited {file_name}")
 
 def read_file_line(file_name, line):
     with open(file_name) as file:
